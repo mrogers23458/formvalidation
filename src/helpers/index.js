@@ -10,8 +10,6 @@ export const validateForm = (form, schema) => {
         fieldName.charAt(0).toUpperCase() + fieldName.slice(1)
       } is required.`;
     }
-
-    console.log({ fieldRules });
     // Check regex validation if specified
     if (fieldRules.regex && !fieldRules.regex.test(form[fieldName].trim())) {
       errors[fieldName] = fieldRules.message;
@@ -24,7 +22,7 @@ export const validateForm = (form, schema) => {
     ) {
       errors[fieldName] = fieldRules.message;
     }
-
+    // Handle customValidation
     if (fieldRules.customValidation) {
       const result = fieldRules.customValidation(form[fieldName]);
       errors[fieldName] = result;

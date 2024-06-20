@@ -24,6 +24,7 @@ const loginReducer = (state, action) => {
 const handleSubmit = async (event, payload, dispatch) => {
   event.preventDefault();
   const validationErrors = validateForm(payload, loginValidationSchema);
+
   if (Object.keys(validationErrors).length > 0) {
     return dispatch({
       type: "FORM_ERRORS",
